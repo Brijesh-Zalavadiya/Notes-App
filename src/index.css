@@ -4,3 +4,6 @@
 #notes::-webkit-scrollbar{
     display: none;
 }
+#descP::-webkit-scrollbar{
+    display: none;
+}
