@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 const App = () => {
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
-    const [task, setTask] = useState([]);
+
+    const [task, setTask] = useState(() => {
+        const notes = localStorage.getItem('Notes');
+        return notes ? JSON.parse(notes) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('Notes', JSON.stringify(task));
+    }, [task]);
 
     const submitHandler = (e) => {
         e.preventDefault();
-
 
         const copyTask = [...task];
 
@@ -16,7 +23,6 @@ const App = () => {
             copyTask.push({ title, desc });
             setTask(copyTask);
         }
-        console.log(copyTask);
 
         setTitle('');
         setDesc('');
@@ -72,32 +78,30 @@ const App = () => {
                     id="notes"
                     className="flex flex-wrap items-start justify-start gap-5 mt-10 overflow-auto text-black"
                 >
-                    {task.map(function (elem, idx) {
-                        return (
-                            <div
-                                key={idx}
-                                className="relative flex justify-between flex-col h-52 w-full items-start sm:w-50 bg-cover rounded-2xl p-5 bg-yellow-200 "
+                    {task.map((elem, idx) => (
+                        <div
+                            key={idx}
+                            className="relative flex justify-between flex-col h-52 w-full items-start sm:w-50 rounded-2xl p-5 bg-yellow-200 "
+                        >
+                            <h3 className="leading-tight text-xl font-bold h-5">
+                                {elem.title}
+                            </h3>
+                            <p
+                                id="descP"
+                                className="mt-4 h-full leading-tight text-gray-600 "
                             >
-                                <h3 className="leading-tight text-xl font-bold h-5">
-                                    {elem.title}
-                                </h3>
-                                <p
-                                    id="descP"
-                                    className="mt-4 h-full leading-tight text-gray-600 "
-                                >
-                                    {elem.desc}
-                                </p>
-                                <button
-                                    onClick={() => {
-                                        deleteNote(idx);
-                                    }}
-                                    className="w-full text-red-700 font-bold cursor-pointer active:scale-95"
-                                >
-                                    delete note
-                                </button>
-                            </div>
-                        );
-                    })}
+                                {elem.desc}
+                            </p>
+                            <button
+                                onClick={() => {
+                                    deleteNote(idx);
+                                }}
+                                className="w-full text-red-700 font-bold cursor-pointer active:scale-95"
+                            >
+                                delete note
+                            </button>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
