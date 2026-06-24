@@ -7,8 +7,9 @@ const Skeleton = () => {
       >
           <div className="w-2/3 bg-mist-700 h-7 rounded-full"></div>
           <div className="w-10/11 bg-mist-700 h-1/2 rounded-2xl"></div>
-          <div className="w-full flex justify-center">
-              <div className="w-25 bg-mist-700  h-7 rounded-full"></div>
+          <div className="flex justify-between w-full px-10 sm:px-2">
+              <div className="w-25 sm:w-15 bg-mist-700 h-7 rounded-full"></div>
+              <div className="w-25 sm:w-15 bg-mist-700 h-7 rounded-full"></div>
           </div>
       </div>
   );
