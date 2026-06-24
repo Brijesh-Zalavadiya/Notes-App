@@ -35,7 +35,7 @@ const Form = (props) => {
                 />
 
                 <button className="w-full cursor-pointer active:scale-98 bg-white text-black font-medium px-5 py-2 rounded hover:bg-stone-200">
-                    Add Note
+                    {props.btn} Note
                 </button>
             </form>
     );

@@ -7,6 +7,7 @@ const App = () => {
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [editidx, setEditidx] = useState(-1);
+    const [btn, setbtn] = useState('Add')
     
     const [task, setTask] = useState(() => {
         const notes = localStorage.getItem('Notes');
@@ -28,6 +29,7 @@ const App = () => {
                 editNote.desc = desc;
                 console.log(editNote);
                 setEditidx(-1);
+                setbtn('Add');
             } else {
                 copyTask.push({ title, desc });
             }
@@ -61,6 +63,7 @@ const App = () => {
                 desc={desc}
                 setDesc={setDesc}
                 editidx={editidx}
+                btn={btn}
             />
             <hr className="bg-white opacity-50 visible lg:invisible" />
             <Notelist 
