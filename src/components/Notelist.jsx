@@ -21,6 +21,7 @@ const Notelist = (props) => {
                             idx={idx}
                             elem={elem}
                             deleteNote={props.deleteNote}
+                            editNote={props.editNote}
                         />)}
             </div>
         </div>

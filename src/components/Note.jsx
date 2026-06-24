@@ -9,14 +9,24 @@ const Note = (props) => {
             <p id="descP" className="mt-4 h-full leading-tight text-gray-600 ">
                 {props.elem.desc}
             </p>
-            <button
-                onClick={() => {
-                    props.deleteNote(props.idx);
-                }}
-                className="w-full text-red-700 font-bold cursor-pointer active:scale-95"
-            >
-                delete note
-            </button>
+            <div className="flex justify-between w-full">
+                <button
+                    onClick={() => {
+                        props.editNote(props.idx);
+                    }}
+                    className="w-full text-blue-900 font-bold cursor-pointer active:scale-95 "
+                >
+                    Edit
+                </button>
+                <button
+                    onClick={() => {
+                        props.deleteNote(props.idx);
+                    }}
+                    className="w-full text-red-700 font-bold cursor-pointer active:scale-95 "
+                >
+                    Delete
+                </button>
+            </div>
         </div>
     );
 };

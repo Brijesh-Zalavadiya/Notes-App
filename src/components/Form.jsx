@@ -4,7 +4,7 @@ const Form = (props) => {
     return (
             <form
                 onSubmit={(e) => {
-                    props.submitHandler(e);
+                    props.submitHandler(e, props.editidx);
                 }}
                 className=" flex flex-col items-start gap-5 p-10 lg:w-1/2 "
             >
@@ -12,6 +12,7 @@ const Form = (props) => {
 
                 {/*                            Title                          */}
                 <input
+                    id='title'
                     type="text"
                     placeholder="Enter Notes Heading"
                     className="w-full px-5 font-medium py-2 border-2 outline-none rounded"
@@ -23,6 +24,7 @@ const Form = (props) => {
 
                 {/*                          Description                       */}
                 <textarea
+                    id='description'
                     type="text"
                     placeholder="Write Details"
                     className="w-full h-32 px-5 py-2 font-medium border-2 outline-none rounded"
