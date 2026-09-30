@@ -13,11 +13,11 @@ const Notelist = (props) => {
             >
                 {props.task.length === 0
                     ? [1, 2, 3].map((elem, idx) => {
-                          return <Skeleton key={idx} />;
-                      })
-                    : props.task.map((elem, idx) => 
-                        <Note 
-                            key={idx} 
+                        return <Skeleton key={idx} />;
+                    })
+                    : props.task.map((elem, idx) =>
+                        <Note
+                            key={idx}
                             idx={idx}
                             elem={elem}
                             deleteNote={props.deleteNote}
